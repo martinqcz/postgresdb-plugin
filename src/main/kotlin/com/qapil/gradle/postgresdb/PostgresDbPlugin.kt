@@ -8,7 +8,7 @@ import org.gradle.api.provider.Provider
 class PostgresDbPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.extensions.create("postgresdb", PostgresDbExtensionImpl::class.java, project).apply {
-            serviceName.convention("postgresDbService")
+            serviceName.convention("postgresdbService")
             imageName.convention("postgres:16-alpine")
             username.convention("test")
             password.convention("test")
