@@ -27,7 +27,7 @@ gradlePlugin {
         create("postgresdb") {
             id = "com.qapil.postgresdb-gradle"
             displayName = "Postgresdb Plugin"
-            description = "Postgresql database container available for Gradle build tasks." +
+            description = "Postgresql database container available for Gradle build tasks. " +
                 "Can be used for generating source code from database schema."
             tags = listOf("postgres", "database", "testcontainers", "jooq")
             implementationClass = "com.qapil.gradle.postgresdb.PostgresDbPlugin"
