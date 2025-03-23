@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+
 plugins {
     `kotlin-dsl`
     id("com.gradle.plugin-publish") version "1.3.1"
@@ -13,15 +16,16 @@ repositories {
     mavenCentral()
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = "21"
+
+tasks.withType<KotlinJvmCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_11)
     }
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    sourceCompatibility = "21"
-    targetCompatibility = "21"
+    sourceCompatibility = "11"
+    targetCompatibility = "11"
 }
 
 dependencies {

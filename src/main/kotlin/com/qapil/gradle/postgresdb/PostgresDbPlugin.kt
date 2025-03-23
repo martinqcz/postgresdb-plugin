@@ -9,7 +9,7 @@ class PostgresDbPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         project.extensions.create("postgresdb", PostgresDbExtensionImpl::class.java, project).apply {
             serviceName.convention("postgresdbService")
-            imageName.convention("postgres:16-alpine")
+            imageName.convention("postgres:latest")
             username.convention("test")
             password.convention("test")
         }
