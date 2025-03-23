@@ -13,11 +13,29 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+        jvmTarget = "21"
+    }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    sourceCompatibility = "21"
+    targetCompatibility = "21"
+}
+
 dependencies {
     val testcontainersVersion = "1.19.7"
     implementation("org.testcontainers:testcontainers:$testcontainersVersion")
     implementation("org.testcontainers:postgresql:$testcontainersVersion")
 
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
+    testImplementation("org.assertj:assertj-core:3.27.2")
+    testImplementation(gradleTestKit())
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 gradlePlugin {
