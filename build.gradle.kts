@@ -4,12 +4,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 plugins {
     `kotlin-dsl`
     id("com.gradle.plugin-publish") version "1.3.1"
-    id("com.gradleup.shadow") version "8.3.5"
+    // id("com.gradleup.shadow") version "8.3.5"
     signing
 }
 
 group = "com.qapil.gradle"
-version = "1.0.2"
 
 repositories {
     gradlePluginPortal()
@@ -57,8 +56,8 @@ gradlePlugin {
     }
 }
 
-tasks.named("shadowJar", com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class.java) {
-    archiveClassifier = ""
-    isEnableRelocation = true
-    relocationPrefix = "postgresdb_plugin"
-}
+// tasks.named("shadowJar", com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class.java) {
+//     archiveClassifier = ""
+//     isEnableRelocation = true
+//     relocationPrefix = "postgresdb_plugin"
+// }
