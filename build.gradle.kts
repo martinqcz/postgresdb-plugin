@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.qapil.gradle"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     gradlePluginPortal()
@@ -59,4 +59,6 @@ gradlePlugin {
 
 tasks.named("shadowJar", com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class.java) {
     archiveClassifier = ""
+    isEnableRelocation = true
+    relocationPrefix = "postgresdb_plugin"
 }
