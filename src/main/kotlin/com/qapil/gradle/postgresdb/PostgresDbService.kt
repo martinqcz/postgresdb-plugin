@@ -6,7 +6,7 @@ import org.gradle.api.provider.Property
 import org.gradle.api.services.BuildService
 import org.gradle.api.services.BuildServiceParameters
 import org.gradle.api.tasks.Internal
-import org.testcontainers.containers.PostgreSQLContainer
+import org.testcontainers.postgresql.PostgreSQLContainer
 import org.testcontainers.utility.DockerImageName
 
 abstract class PostgresDbService : BuildService<PostgresDbService.Parameters>, AutoCloseable {
@@ -21,7 +21,7 @@ abstract class PostgresDbService : BuildService<PostgresDbService.Parameters>, A
     private val logger = Logging.getLogger(PostgresDbService::class.java)
 
     @Internal
-    private val container: PostgresContainer
+    private val container: PostgreSQLContainer
 
     @get:Internal
     val jdbcUrl: String
@@ -45,7 +45,7 @@ abstract class PostgresDbService : BuildService<PostgresDbService.Parameters>, A
 
         logger.quiet("[PostgresService] Starting container for \"$imageName...")
 
-        container = PostgresContainer(image)
+        container = PostgreSQLContainer(image)
             .withUsername(parameters.username.get())
             .withPassword(parameters.password.get())
         container.start()
@@ -64,7 +64,4 @@ abstract class PostgresDbService : BuildService<PostgresDbService.Parameters>, A
         container.stop()
     }
 }
-
-private class PostgresContainer(dockerImageName: DockerImageName) :
-    PostgreSQLContainer<PostgresContainer>(dockerImageName)
 

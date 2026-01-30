@@ -28,13 +28,10 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 dependencies {
-    val testcontainersVersion = "1.20.6"
-    val apacheCommonsCompress = "1.27.1"
+    val testcontainersVersion = "2.0.3"
 
     implementation("org.testcontainers:testcontainers:$testcontainersVersion")
-    implementation("org.testcontainers:postgresql:$testcontainersVersion")
-    // because of vulnerability in version used by testcontainers
-    implementation("org.apache.commons:commons-compress:$apacheCommonsCompress")
+    implementation("org.testcontainers:testcontainers-postgresql:$testcontainersVersion")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
